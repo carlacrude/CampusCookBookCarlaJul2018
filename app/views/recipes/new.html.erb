@@ -1,0 +1,17 @@
+<%= form_for(@recipe) do |form_recipe| %>
+  <%= form_recipe.label :title, 'Título'%>
+  <%= form_recipe.text_field :title%>
+  <%= form_recipe.label :recipe_type, 'Tipo da Receita'%>
+  <%= form_recipe.text_field :recipe_type%>
+  <%= form_recipe.label :cuisine, 'Cozinha'%>
+  <%= form_recipe.text_field :cuisine%>
+  <%= form_recipe.label :difficulty, 'Dificuldade'%>
+  <%= form_recipe.text_field :difficulty%>
+  <%= form_recipe.label :cook_time, 'Tempo de Preparo'%>
+  <%= form_recipe.text_field :cook_time%>
+  <%= form_recipe.label :ingredients, 'Ingredientes'%>
+  <%= form_recipe.text_area :ingredients%>
+  <%= form_recipe.label :cook_method, 'Como Preparar'%>
+  <%= form_recipe.text_area :cook_method%>
+  <%= form_recipe.submit 'Enviar uma receita'%>
+<%end%>
