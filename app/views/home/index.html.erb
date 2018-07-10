@@ -1,6 +1,8 @@
 <h1>CookBook</h1>
 <p>Bem-vindo ao maior livro de receitas online</p>
 
+<%=link_to "Login", new_user_session_path %>
+
 <% @recipes.each do |r| %>
   <h1><%= link_to(r.title, r) %></h1>
   <ul>
@@ -20,6 +22,10 @@
 <% end %>
 
 <%=link_to "Enviar uma receita", new_recipe_path%>
+
+<% if user_signed_in? %>
+  <p> Olá <%= current_user.email %> <p>
+<% end %>
 
 <%= form_tag("/busca", method: "get") do %>
   <%= label_tag(:nome, "Busca") %>

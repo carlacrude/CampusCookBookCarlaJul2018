@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'User login' do
 
   scenario 'successfully' do
-    user = create(:user)
+    user = User.create(email: 'testeimersao@gmail.com', password: 'teste12345')
 
     visit root_path
     click_on 'Login'
@@ -14,7 +14,7 @@ feature 'User login' do
     click_on 'Entrar'
 
     expect(current_path).to eq(root_path)
-    expect(page).to have_content("Ola #{user.email}")  
+    expect(page).to have_content("Olá #{user.email}")  
   end
 
 end
