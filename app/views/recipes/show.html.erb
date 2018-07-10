@@ -14,5 +14,7 @@
 <h3>Como Preparar</h3>
 <p><%= @recipe.cook_method %></p>
 
+<%= image_tag @recipe.avatar.url %>
+
 <%= link_to 'Editar', edit_recipe_path(@recipe.id) %>
 <%= link_to 'Voltar', root_path %>

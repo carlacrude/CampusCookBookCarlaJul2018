@@ -2,7 +2,7 @@
 
 <%=flash[:error]%>
 
-<%= form_for(@recipe) do |f| %>
+<%= form_for(@recipe, html: { multipart: true }) do |f| %>
   <%= f.label :title, "Título" %>
   <%= f.text_field :title %>
 
@@ -23,6 +23,9 @@
 
   <%= f.label :cook_method, "Como Preparar" %>
   <%= f.text_field :cook_method %>
-
+  
+  <%= f.label :avatar, "Foto" %>
+  <%= f.file_field :avatar %>
+  
   <%= f.submit "Enviar" %>
 <% end %>
