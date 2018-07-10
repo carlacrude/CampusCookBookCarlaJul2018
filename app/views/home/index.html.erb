@@ -21,10 +21,10 @@
   <%= link_to recipe_type.name, recipe_type %>
 <% end %>
 
-<%=link_to "Enviar uma receita", new_recipe_path%>
-
 <% if user_signed_in? %>
   <p> Olá <%= current_user.email %> <p>
+  <% else %>
+    <%=link_to "Enviar uma receita", new_recipe_path%>
 <% end %>
 
 <%= form_tag("/busca", method: "get") do %>
