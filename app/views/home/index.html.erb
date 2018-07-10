@@ -20,3 +20,11 @@
 <% end %>
 
 <%=link_to "Enviar uma receita", new_recipe_path%>
+
+<%= form_tag("/busca", method: "get") do %>
+  <%= label_tag(:nome, "Busca") %>
+  <%= text_field_tag(:nome) %>
+  <%= submit_tag("Buscar") %>
+<%end%>
+
+<h1> <%= flash[:alert] %> </h1>

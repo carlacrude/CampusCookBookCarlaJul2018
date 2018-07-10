@@ -1,0 +1,17 @@
+<h1> <%= flash[:message] %> </h1>
+
+<%= @busca.each do |busca| %>
+
+    <h1> <%= busca.title %> <h1>
+    <p> <%= busca.recipe_type.name %> </p>
+    <p> <%= busca.cuisine.name %> </p>
+    <p> <%= busca.difficulty %> </p>
+    <p> <%= busca.cook_time %> minutos </p>
+    
+    <h3>Ingredientes </h3>
+    <p> <%= busca.ingredients %> </p>
+    
+    <h3> Como Preparar </h3>
+    <p> <%= busca.cook_method %> </p>
+
+<% end %>
