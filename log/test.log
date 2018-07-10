@@ -8471,3 +8471,1457 @@ Processing by HomeController#index as HTML
   Rendered home/index.html.erb within layouts/application (9.6ms)
 Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 1.0ms)
   [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Africana"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (1.2ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Africana"], ["created_at", "2018-07-10 12:53:29.399618"], ["updated_at", "2018-07-10 12:53:29.399618"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.4ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Entrada"], ["created_at", "2018-07-10 12:53:29.454977"], ["updated_at", "2018-07-10 12:53:29.454977"]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (14.9ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Ensopado de galinha africanesa"], ["difficulty", "diífil"], ["cook_time", 120], ["created_at", "2018-07-10 12:53:29.640724"], ["updated_at", "2018-07-10 12:53:29.640724"], ["ingredients", "Galinha, açúcar mascavo, legumes"], ["cook_method", "Cozinhe tudo e seja feliz!"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:29 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.7ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (69.4ms)
+Completed 200 OK in 3463ms (Views: 3318.6ms | ActiveRecord: 1.5ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 09:53:33 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (125.9ms)
+Completed 200 OK in 170ms (Views: 158.4ms | ActiveRecord: 0.5ms)
+Started GET "/recipes/1/edit" for 127.0.0.1 at 2018-07-10 09:53:33 -0300
+Processing by RecipesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/edit.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.5ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/edit.html.erb within layouts/application (44.5ms)
+Completed 200 OK in 111ms (Views: 49.6ms | ActiveRecord: 1.4ms)
+Started PATCH "/recipes/1" for 127.0.0.1 at 2018-07-10 09:53:33 -0300
+Processing by RecipesController#update as HTML
+  Parameters: {"utf8"=>"✓", "recipe"=>{"title"=>"Africaninha", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"fácil", "cook_time"=>"60", "ingredients"=>"Amor", "cook_method"=>"Cozinhe tudo e seja feliz!"}, "commit"=>"Enviar", "id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Load (1.5ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipe Update (0.3ms)[0m  [1m[33mUPDATE "recipes" SET "title" = ?, "difficulty" = ?, "cook_time" = ?, "ingredients" = ?, "updated_at" = ? WHERE "recipes"."id" = ?[0m  [["title", "Africaninha"], ["difficulty", "fácil"], ["cook_time", 60], ["ingredients", "Amor"], ["updated_at", "2018-07-10 12:53:34.010557"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/recipes/1
+Completed 302 Found in 113ms (ActiveRecord: 2.3ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 09:53:34 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (39.2ms)
+Completed 200 OK in 122ms (Views: 118.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Francesa"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.6ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Francesa"], ["created_at", "2018-07-10 12:53:34.424340"], ["updated_at", "2018-07-10 12:53:34.424340"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.3ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato principal"], ["created_at", "2018-07-10 12:53:34.597167"], ["updated_at", "2018-07-10 12:53:34.597167"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "le Pipoquê"], ["difficulty", "Mui dificil"], ["cook_time", 7], ["created_at", "2018-07-10 12:53:34.602110"], ["updated_at", "2018-07-10 12:53:34.602110"], ["ingredients", "miliú, oliu e sal"], ["cook_method", "misturre todo os ingredientes em fogo baixo até explodir tudo"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:34 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (71.1ms)
+Completed 200 OK in 111ms (Views: 108.2ms | ActiveRecord: 1.0ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 09:53:34 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (32.9ms)
+Completed 200 OK in 40ms (Views: 35.2ms | ActiveRecord: 0.5ms)
+Started GET "/recipes/1/edit" for 127.0.0.1 at 2018-07-10 09:53:34 -0300
+Processing by RecipesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/edit.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/edit.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.5ms)
+Started PATCH "/recipes/1" for 127.0.0.1 at 2018-07-10 09:53:35 -0300
+Processing by RecipesController#update as HTML
+  Parameters: {"utf8"=>"✓", "recipe"=>{"title"=>"le Pipoquê", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Mui dificil", "cook_time"=>"7", "ingredients"=>"", "cook_method"=>""}, "commit"=>"Enviar", "id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering recipes/edit.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/edit.html.erb within layouts/application (16.3ms)
+Completed 200 OK in 61ms (Views: 24.3ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/cuisines/new" for 127.0.0.1 at 2018-07-10 09:53:35 -0300
+Processing by CuisinesController#new as HTML
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 66ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+Started POST "/cuisines" for 127.0.0.1 at 2018-07-10 09:53:35 -0300
+Processing by CuisinesController#create as HTML
+  Parameters: {"utf8"=>"✓", "cuisine"=>{"name"=>"Brasileira"}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (3.0ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.7ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:35.475437"], ["updated_at", "2018-07-10 12:53:35.475437"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/cuisines/1
+Completed 302 Found in 14ms (ActiveRecord: 4.0ms)
+Started GET "/cuisines/1" for 127.0.0.1 at 2018-07-10 09:53:35 -0300
+Processing by CuisinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cuisines/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (7.4ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."cuisine_id" = ? LIMIT ?[0m  [["cuisine_id", 1], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."cuisine_id" = ?[0m  [["cuisine_id", 1]]
+  Rendered cuisines/show.html.erb within layouts/application (29.3ms)
+Completed 200 OK in 150ms (Views: 110.0ms | ActiveRecord: 7.9ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/cuisines/new" for 127.0.0.1 at 2018-07-10 09:53:35 -0300
+Processing by CuisinesController#new as HTML
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 40ms (Views: 39.0ms | ActiveRecord: 0.0ms)
+Started POST "/cuisines" for 127.0.0.1 at 2018-07-10 09:53:35 -0300
+Processing by CuisinesController#create as HTML
+  Parameters: {"utf8"=>"✓", "cuisine"=>{"name"=>""}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 22ms (Views: 9.5ms | ActiveRecord: 2.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (4.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (1.8ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:36.078453"], ["updated_at", "2018-07-10 12:53:36.078453"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cuisines/new" for 127.0.0.1 at 2018-07-10 09:53:36 -0300
+Processing by CuisinesController#new as HTML
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 96ms (Views: 94.8ms | ActiveRecord: 0.0ms)
+Started POST "/cuisines" for 127.0.0.1 at 2018-07-10 09:53:36 -0300
+Processing by CuisinesController#create as HTML
+  Parameters: {"utf8"=>"✓", "cuisine"=>{"name"=>"Brasileira"}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[35m (2.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 91ms (Views: 6.1ms | ActiveRecord: 2.4ms)
+  [1m[35m (26.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/recipe_types/new" for 127.0.0.1 at 2018-07-10 09:53:36 -0300
+Processing by RecipeTypesController#new as HTML
+  Rendering recipe_types/new.html.erb within layouts/application
+  Rendered recipe_types/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 30ms (Views: 17.8ms | ActiveRecord: 0.0ms)
+Started POST "/recipe_types" for 127.0.0.1 at 2018-07-10 09:53:36 -0300
+Processing by RecipeTypesController#create as HTML
+  Parameters: {"utf8"=>"✓", "recipe_type"=>{"name"=>"Sobremesa"}, "commit"=>"Enviar"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (3.8ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:36.649629"], ["updated_at", "2018-07-10 12:53:36.649629"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/recipe_types/1
+Completed 302 Found in 170ms (ActiveRecord: 4.1ms)
+Started GET "/recipe_types/1" for 127.0.0.1 at 2018-07-10 09:53:36 -0300
+Processing by RecipeTypesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipe_types/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."recipe_type_id" = ? LIMIT ?[0m  [["recipe_type_id", 1], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."recipe_type_id" = ?[0m  [["recipe_type_id", 1]]
+  Rendered recipe_types/show.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 30ms (Views: 11.3ms | ActiveRecord: 1.2ms)
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/recipe_types/new" for 127.0.0.1 at 2018-07-10 09:53:36 -0300
+Processing by RecipeTypesController#new as HTML
+  Rendering recipe_types/new.html.erb within layouts/application
+  Rendered recipe_types/new.html.erb within layouts/application (95.4ms)
+Completed 200 OK in 113ms (Views: 111.6ms | ActiveRecord: 0.0ms)
+Started POST "/recipe_types" for 127.0.0.1 at 2018-07-10 09:53:37 -0300
+Processing by RecipeTypesController#create as HTML
+  Parameters: {"utf8"=>"✓", "recipe_type"=>{"name"=>""}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering recipe_types/new.html.erb within layouts/application
+  Rendered recipe_types/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 32ms (Views: 20.3ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.5ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:37.141531"], ["updated_at", "2018-07-10 12:53:37.141531"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (121.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.3ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:37.267370"], ["updated_at", "2018-07-10 12:53:37.267370"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.6ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:37.270638"], ["updated_at", "2018-07-10 12:53:37.270638"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:37 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (14.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.4ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.3ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (52.8ms)
+Completed 200 OK in 150ms (Views: 39.9ms | ActiveRecord: 15.6ms)
+Started GET "/busca?utf8=%E2%9C%93&nome=Bolo+de+cenoura&commit=Buscar" for 127.0.0.1 at 2018-07-10 09:53:37 -0300
+Processing by RecipesController#buscar as HTML
+  Parameters: {"utf8"=>"✓", "nome"=>"Bolo de cenoura", "commit"=>"Buscar"}
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."title" = ? LIMIT ?[0m  [["title", "Bolo de cenoura"], ["LIMIT", 1]]
+  Rendering recipes/buscar.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" = ?[0m  [["title", "Bolo de cenoura"]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/buscar.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 138ms (Views: 21.9ms | ActiveRecord: 0.8ms)
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.7ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:37.797744"], ["updated_at", "2018-07-10 12:53:37.797744"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.3ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:37.802882"], ["updated_at", "2018-07-10 12:53:37.802882"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (1.7ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:37.805769"], ["updated_at", "2018-07-10 12:53:37.805769"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:38 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (1.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (33.9ms)
+Completed 200 OK in 98ms (Views: 94.9ms | ActiveRecord: 1.8ms)
+Started GET "/busca?utf8=%E2%9C%93&nome=Biscoito&commit=Buscar" for 127.0.0.1 at 2018-07-10 09:53:38 -0300
+Processing by RecipesController#buscar as HTML
+  Parameters: {"utf8"=>"✓", "nome"=>"Biscoito", "commit"=>"Buscar"}
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."title" = ? LIMIT ?[0m  [["title", "Biscoito"], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:38 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.5ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (84.0ms)
+Completed 200 OK in 115ms (Views: 85.5ms | ActiveRecord: 1.4ms)
+  [1m[35m (52.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Arabe"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.6ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Arabe"], ["created_at", "2018-07-10 12:53:38.369158"], ["updated_at", "2018-07-10 12:53:38.369158"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.3ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Entrada"], ["created_at", "2018-07-10 12:53:38.375774"], ["updated_at", "2018-07-10 12:53:38.375774"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato Principal"], ["created_at", "2018-07-10 12:53:38.447697"], ["updated_at", "2018-07-10 12:53:38.447697"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:38.449713"], ["updated_at", "2018-07-10 12:53:38.449713"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:38 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 59ms (Views: 6.5ms | ActiveRecord: 0.6ms)
+Started GET "/recipes/new" for 127.0.0.1 at 2018-07-10 09:53:38 -0300
+Processing by RecipesController#new as HTML
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.3ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 45ms (Views: 13.0ms | ActiveRecord: 0.5ms)
+Started POST "/recipes" for 127.0.0.1 at 2018-07-10 09:53:39 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "recipe"=>{"title"=>"Tabule", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Fácil", "cook_time"=>"45", "ingredients"=>"Trigo para quibe, cebola, tomate picado, azeite, salsinha", "cook_method"=>"Misturar tudo e servir. Adicione limão a gosto.", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fd84b3a4050 @tempfile=#<Tempfile:/var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/RackMultipart20180710-89280-19vysni.jpg>, @original_filename="tabule.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"recipe[avatar]\"; filename=\"tabule.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 40409\r\n">}, "commit"=>"Enviar"}
+[paperclip] Trying to link /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/RackMultipart20180710-89280-19vysni.jpg to /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89280-179qkht.jpg
+[paperclip] Trying to link /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89280-179qkht.jpg to /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89280-g835r7.jpg
+Command :: file -b --mime '/var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89280-g835r7.jpg'
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[paperclip] Trying to link /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89280-179qkht.jpg to /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89280-10n6jpf.jpg
+Command :: file -b --mime '/var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89280-10n6jpf.jpg'
+  [1m[36mRecipe Create (1.3ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Tabule"], ["difficulty", "Fácil"], ["cook_time", 45], ["created_at", "2018-07-10 12:53:39.432165"], ["updated_at", "2018-07-10 12:53:39.432165"], ["ingredients", "Trigo para quibe, cebola, tomate picado, azeite, salsinha"], ["cook_method", "Misturar tudo e servir. Adicione limão a gosto."], ["cuisine_id", 1], ["recipe_type_id", 1], ["avatar_file_name", "tabule.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 40409], ["avatar_updated_at", "2018-07-10 12:53:39.257853"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/recipes/1
+Completed 302 Found in 428ms (ActiveRecord: 2.2ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 09:53:39 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.3ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 20ms (Views: 16.5ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Arabe"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.5ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Arabe"], ["created_at", "2018-07-10 12:53:39.772480"], ["updated_at", "2018-07-10 12:53:39.772480"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:39 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (1.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mCuisine Load (0.4ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (83.3ms)
+Completed 200 OK in 96ms (Views: 92.4ms | ActiveRecord: 2.1ms)
+Started GET "/recipes/new" for 127.0.0.1 at 2018-07-10 09:53:39 -0300
+Processing by RecipesController#new as HTML
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (1.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (1.5ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/new.html.erb within layouts/application (118.6ms)
+Completed 200 OK in 174ms (Views: 161.4ms | ActiveRecord: 2.6ms)
+Started POST "/recipes" for 127.0.0.1 at 2018-07-10 09:53:40 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "recipe"=>{"title"=>"", "cuisine_id"=>"1", "difficulty"=>"", "cook_time"=>"", "ingredients"=>"", "cook_method"=>""}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/new.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 126ms (Views: 21.7ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.6ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:40.521153"], ["updated_at", "2018-07-10 12:53:40.521153"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.6ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:40.524080"], ["updated_at", "2018-07-10 12:53:40.524080"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.5ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:40.651411"], ["updated_at", "2018-07-10 12:53:40.651411"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:40 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (4.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 103ms (Views: 16.3ms | ActiveRecord: 4.8ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 09:53:40 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (1.6ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (2.9ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (27.1ms)
+Completed 200 OK in 113ms (Views: 28.2ms | ActiveRecord: 4.5ms)
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.6ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:41.048024"], ["updated_at", "2018-07-10 12:53:41.048024"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (3.0ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:41.054762"], ["updated_at", "2018-07-10 12:53:41.054762"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.5ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:41.204193"], ["updated_at", "2018-07-10 12:53:41.204193"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:41 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (7.5ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (62.1ms)
+Completed 200 OK in 67ms (Views: 57.2ms | ActiveRecord: 8.5ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 09:53:41 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (125.1ms)
+Completed 200 OK in 133ms (Views: 130.4ms | ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:41 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (1.0ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 60ms (Views: 55.6ms | ActiveRecord: 1.9ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (78.8ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.9ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:41.739140"], ["updated_at", "2018-07-10 12:53:41.739140"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.4ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:41.744685"], ["updated_at", "2018-07-10 12:53:41.744685"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:41.771551"], ["updated_at", "2018-07-10 12:53:41.771551"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:41 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.8ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (110.6ms)
+Completed 200 OK in 239ms (Views: 236.4ms | ActiveRecord: 1.6ms)
+Started GET "/cuisines/1" for 127.0.0.1 at 2018-07-10 09:53:42 -0300
+Processing by CuisinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cuisines/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."cuisine_id" = ? LIMIT ?[0m  [["cuisine_id", 1], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."cuisine_id" = ?[0m  [["cuisine_id", 1]]
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cuisines/show.html.erb within layouts/application (38.2ms)
+Completed 200 OK in 61ms (Views: 53.7ms | ActiveRecord: 1.3ms)
+  [1m[35m (4.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.6ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:42.224536"], ["updated_at", "2018-07-10 12:53:42.224536"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (9.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.7ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:42.246138"], ["updated_at", "2018-07-10 12:53:42.246138"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:42.271771"], ["updated_at", "2018-07-10 12:53:42.271771"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Italiana"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.2ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Italiana"], ["created_at", "2018-07-10 12:53:42.278235"], ["updated_at", "2018-07-10 12:53:42.278235"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato Principal"], ["created_at", "2018-07-10 12:53:42.281122"], ["updated_at", "2018-07-10 12:53:42.281122"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Macarrão Carbonara"], ["difficulty", "Difícil"], ["cook_time", 30], ["created_at", "2018-07-10 12:53:42.284714"], ["updated_at", "2018-07-10 12:53:42.284714"], ["ingredients", "Massa, ovos, bacon"], ["cook_method", "Frite o bacon; Cozinhe a massa ate ficar al dent; Misture os ovos e o bacon a massa ainda quente;"], ["cuisine_id", 2], ["recipe_type_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:42 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.9ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (88.2ms)
+Completed 200 OK in 206ms (Views: 122.4ms | ActiveRecord: 2.0ms)
+Started GET "/cuisines/2" for 127.0.0.1 at 2018-07-10 09:53:42 -0300
+Processing by CuisinesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering cuisines/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."cuisine_id" = ? LIMIT ?[0m  [["cuisine_id", 2], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."cuisine_id" = ?[0m  [["cuisine_id", 2]]
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered cuisines/show.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 14ms (Views: 10.5ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.6ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:42.654739"], ["updated_at", "2018-07-10 12:53:42.654739"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.4ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:42.661849"], ["updated_at", "2018-07-10 12:53:42.661849"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (74.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.5ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:42.749070"], ["updated_at", "2018-07-10 12:53:42.749070"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Italiana"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.2ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Italiana"], ["created_at", "2018-07-10 12:53:42.758707"], ["updated_at", "2018-07-10 12:53:42.758707"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:42 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.6ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.8ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (124.2ms)
+Completed 200 OK in 169ms (Views: 165.4ms | ActiveRecord: 1.9ms)
+Started GET "/cuisines/2" for 127.0.0.1 at 2018-07-10 09:53:42 -0300
+Processing by CuisinesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering cuisines/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."cuisine_id" = ? LIMIT ?[0m  [["cuisine_id", 2], ["LIMIT", 1]]
+  [1m[36mRecipe Load (3.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."cuisine_id" = ?[0m  [["cuisine_id", 2]]
+  Rendered cuisines/show.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 21ms (Views: 14.7ms | ActiveRecord: 4.1ms)
+  [1m[35m (1.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.5ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:43.030257"], ["updated_at", "2018-07-10 12:53:43.030257"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:43.032825"], ["updated_at", "2018-07-10 12:53:43.032825"]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:43.112333"], ["updated_at", "2018-07-10 12:53:43.112333"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:43 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (8.3ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.6ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.4ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (104.6ms)
+Completed 200 OK in 116ms (Views: 101.6ms | ActiveRecord: 9.7ms)
+Started GET "/recipe_types/1" for 127.0.0.1 at 2018-07-10 09:53:43 -0300
+Processing by RecipeTypesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipe_types/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."recipe_type_id" = ? LIMIT ?[0m  [["recipe_type_id", 1], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."recipe_type_id" = ?[0m  [["recipe_type_id", 1]]
+  [1m[36mCuisine Load (4.9ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipe_types/show.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 112ms (Views: 103.6ms | ActiveRecord: 5.5ms)
+  [1m[35m (5.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.6ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:43.473473"], ["updated_at", "2018-07-10 12:53:43.473473"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (2.0ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:43.489505"], ["updated_at", "2018-07-10 12:53:43.489505"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:43.531849"], ["updated_at", "2018-07-10 12:53:43.531849"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Italiana"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.2ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Italiana"], ["created_at", "2018-07-10 12:53:43.559624"], ["updated_at", "2018-07-10 12:53:43.559624"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato Principal"], ["created_at", "2018-07-10 12:53:43.568270"], ["updated_at", "2018-07-10 12:53:43.568270"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Macarrão Carbonara"], ["difficulty", "Difícil"], ["cook_time", 30], ["created_at", "2018-07-10 12:53:43.579584"], ["updated_at", "2018-07-10 12:53:43.579584"], ["ingredients", "Massa, ovos, bacon"], ["cook_method", "Frite o bacon; Cozinhe a massa ate ficar al dent; Misture os ovos e o bacon a massa ainda quente;"], ["cuisine_id", 2], ["recipe_type_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:43 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (2.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (127.3ms)
+Completed 200 OK in 136ms (Views: 130.1ms | ActiveRecord: 3.7ms)
+Started GET "/recipe_types/2" for 127.0.0.1 at 2018-07-10 09:53:43 -0300
+Processing by RecipeTypesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering recipe_types/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."recipe_type_id" = ? LIMIT ?[0m  [["recipe_type_id", 2], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."recipe_type_id" = ?[0m  [["recipe_type_id", 2]]
+  [1m[36mCuisine Load (1.7ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered recipe_types/show.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 15ms (Views: 8.9ms | ActiveRecord: 2.3ms)
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (11.9ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.8ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:43.895817"], ["updated_at", "2018-07-10 12:53:43.895817"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.3ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:43.914374"], ["updated_at", "2018-07-10 12:53:43.914374"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.7ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:43.927815"], ["updated_at", "2018-07-10 12:53:43.927815"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.6ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato Principal"], ["created_at", "2018-07-10 12:53:43.939301"], ["updated_at", "2018-07-10 12:53:43.939301"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:43 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.7ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (1.0ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 33ms (Views: 28.6ms | ActiveRecord: 2.6ms)
+Started GET "/recipe_types/2" for 127.0.0.1 at 2018-07-10 09:53:44 -0300
+Processing by RecipeTypesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipeType Load (0.3ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering recipe_types/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."recipe_type_id" = ? LIMIT ?[0m  [["recipe_type_id", 2], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."recipe_type_id" = ?[0m  [["recipe_type_id", 2]]
+  Rendered recipe_types/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:44 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (3.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.5ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:44.162580"], ["updated_at", "2018-07-10 12:53:44.162580"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.3ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:44.165954"], ["updated_at", "2018-07-10 12:53:44.165954"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (3.0ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:44.178541"], ["updated_at", "2018-07-10 12:53:44.178541"], ["ingredients", "Cenoura, acucar, oleo e chocolate"], ["cook_method", "Misturar tudo, bater e assar"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:44 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 1.0ms)
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.7ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 12:53:44.277648"], ["updated_at", "2018-07-10 12:53:44.277648"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.4ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 12:53:44.289274"], ["updated_at", "2018-07-10 12:53:44.289274"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (1.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 12:53:44.292701"], ["updated_at", "2018-07-10 12:53:44.292701"], ["ingredients", "Cenoura, acucar, oleo e chocolate"], ["cook_method", "Misturar tudo, bater e assar"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato Principal"], ["created_at", "2018-07-10 12:53:44.317707"], ["updated_at", "2018-07-10 12:53:44.317707"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Feijoada"], ["difficulty", "Difícil"], ["cook_time", 90], ["created_at", "2018-07-10 12:53:44.367527"], ["updated_at", "2018-07-10 12:53:44.367527"], ["ingredients", "Feijao, paio, carne seca"], ["cook_method", "Cozinhar o feijao e refogar com as carnes já preparadas"], ["cuisine_id", 1], ["recipe_type_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 09:53:44 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 34ms (Views: 32.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (3.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Africana"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (1.3ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Africana"], ["created_at", "2018-07-10 13:21:00.046956"], ["updated_at", "2018-07-10 13:21:00.046956"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.4ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Entrada"], ["created_at", "2018-07-10 13:21:00.062577"], ["updated_at", "2018-07-10 13:21:00.062577"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.8ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Ensopado de galinha africanesa"], ["difficulty", "diífil"], ["cook_time", 120], ["created_at", "2018-07-10 13:21:00.131562"], ["updated_at", "2018-07-10 13:21:00.131562"], ["ingredients", "Galinha, açúcar mascavo, legumes"], ["cook_method", "Cozinhe tudo e seja feliz!"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:00 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 584ms (Views: 570.4ms | ActiveRecord: 0.6ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 10:21:00 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (1.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 25ms (Views: 19.0ms | ActiveRecord: 1.5ms)
+Started GET "/recipes/1/edit" for 127.0.0.1 at 2018-07-10 10:21:00 -0300
+Processing by RecipesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/edit.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/edit.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 23ms (Views: 17.2ms | ActiveRecord: 0.4ms)
+Started PATCH "/recipes/1" for 127.0.0.1 at 2018-07-10 10:21:00 -0300
+Processing by RecipesController#update as HTML
+  Parameters: {"utf8"=>"✓", "recipe"=>{"title"=>"Africaninha", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"fácil", "cook_time"=>"60", "ingredients"=>"Amor", "cook_method"=>"Cozinhe tudo e seja feliz!"}, "commit"=>"Enviar", "id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipe Update (0.3ms)[0m  [1m[33mUPDATE "recipes" SET "title" = ?, "difficulty" = ?, "cook_time" = ?, "ingredients" = ?, "updated_at" = ? WHERE "recipes"."id" = ?[0m  [["title", "Africaninha"], ["difficulty", "fácil"], ["cook_time", 60], ["ingredients", "Amor"], ["updated_at", "2018-07-10 13:21:00.854257"], ["id", 1]]
+  [1m[35m (2.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/recipes/1
+Completed 302 Found in 15ms (ActiveRecord: 2.7ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 10:21:00 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.0ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Francesa"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.3ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Francesa"], ["created_at", "2018-07-10 13:21:00.889034"], ["updated_at", "2018-07-10 13:21:00.889034"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato principal"], ["created_at", "2018-07-10 13:21:00.894089"], ["updated_at", "2018-07-10 13:21:00.894089"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.5ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "le Pipoquê"], ["difficulty", "Mui dificil"], ["cook_time", 7], ["created_at", "2018-07-10 13:21:00.895792"], ["updated_at", "2018-07-10 13:21:00.895792"], ["ingredients", "miliú, oliu e sal"], ["cook_method", "misturre todo os ingredientes em fogo baixo até explodir tudo"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:00 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 1.1ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 10:21:00 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.3ms)
+Started GET "/recipes/1/edit" for 127.0.0.1 at 2018-07-10 10:21:00 -0300
+Processing by RecipesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/edit.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/edit.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.3ms)
+Started PATCH "/recipes/1" for 127.0.0.1 at 2018-07-10 10:21:00 -0300
+Processing by RecipesController#update as HTML
+  Parameters: {"utf8"=>"✓", "recipe"=>{"title"=>"le Pipoquê", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Mui dificil", "cook_time"=>"7", "ingredients"=>"", "cook_method"=>""}, "commit"=>"Enviar", "id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering recipes/edit.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/edit.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 26ms (Views: 4.8ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/cuisines/new" for 127.0.0.1 at 2018-07-10 10:21:00 -0300
+Processing by CuisinesController#new as HTML
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 37ms (Views: 31.6ms | ActiveRecord: 0.0ms)
+Started POST "/cuisines" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by CuisinesController#create as HTML
+  Parameters: {"utf8"=>"✓", "cuisine"=>{"name"=>"Brasileira"}, "commit"=>"Enviar"}
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.3ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:01.046371"], ["updated_at", "2018-07-10 13:21:01.046371"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/cuisines/1
+Completed 302 Found in 6ms (ActiveRecord: 1.1ms)
+Started GET "/cuisines/1" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by CuisinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cuisines/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."cuisine_id" = ? LIMIT ?[0m  [["cuisine_id", 1], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."cuisine_id" = ?[0m  [["cuisine_id", 1]]
+  Rendered cuisines/show.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 17ms (Views: 12.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/cuisines/new" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by CuisinesController#new as HTML
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+Started POST "/cuisines" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by CuisinesController#create as HTML
+  Parameters: {"utf8"=>"✓", "cuisine"=>{"name"=>""}, "commit"=>"Enviar"}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 13ms (Views: 7.7ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.5ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:01.103364"], ["updated_at", "2018-07-10 13:21:01.103364"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cuisines/new" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by CuisinesController#new as HTML
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+Started POST "/cuisines" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by CuisinesController#create as HTML
+  Parameters: {"utf8"=>"✓", "cuisine"=>{"name"=>"Brasileira"}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering cuisines/new.html.erb within layouts/application
+  Rendered cuisines/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 12ms (Views: 2.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/recipe_types/new" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipeTypesController#new as HTML
+  Rendering recipe_types/new.html.erb within layouts/application
+  Rendered recipe_types/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 17ms (Views: 13.7ms | ActiveRecord: 0.0ms)
+Started POST "/recipe_types" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipeTypesController#create as HTML
+  Parameters: {"utf8"=>"✓", "recipe_type"=>{"name"=>"Sobremesa"}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.8ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:01.173002"], ["updated_at", "2018-07-10 13:21:01.173002"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/recipe_types/1
+Completed 302 Found in 8ms (ActiveRecord: 1.1ms)
+Started GET "/recipe_types/1" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipeTypesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipe_types/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."recipe_type_id" = ? LIMIT ?[0m  [["recipe_type_id", 1], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."recipe_type_id" = ?[0m  [["recipe_type_id", 1]]
+  Rendered recipe_types/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 9ms (Views: 4.8ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/recipe_types/new" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipeTypesController#new as HTML
+  Rendering recipe_types/new.html.erb within layouts/application
+  Rendered recipe_types/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+Started POST "/recipe_types" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipeTypesController#create as HTML
+  Parameters: {"utf8"=>"✓", "recipe_type"=>{"name"=>""}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering recipe_types/new.html.erb within layouts/application
+  Rendered recipe_types/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.7ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:01.223813"], ["updated_at", "2018-07-10 13:21:01.223813"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:01.230786"], ["updated_at", "2018-07-10 13:21:01.230786"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:01.232445"], ["updated_at", "2018-07-10 13:21:01.232445"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.8ms)
+Started GET "/busca?utf8=%E2%9C%93&nome=Bolo+de+cenoura&commit=Buscar" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipesController#buscar as HTML
+  Parameters: {"utf8"=>"✓", "nome"=>"Bolo de cenoura", "commit"=>"Buscar"}
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."title" = ? LIMIT ?[0m  [["title", "Bolo de cenoura"], ["LIMIT", 1]]
+  Rendering recipes/buscar.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."title" = ?[0m  [["title", "Bolo de cenoura"]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/buscar.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 14ms (Views: 4.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.3ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:01.289106"], ["updated_at", "2018-07-10 13:21:01.289106"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.3ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:01.295278"], ["updated_at", "2018-07-10 13:21:01.295278"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:01.297990"], ["updated_at", "2018-07-10 13:21:01.297990"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.5ms)
+Started GET "/busca?utf8=%E2%9C%93&nome=Biscoito&commit=Buscar" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipesController#buscar as HTML
+  Parameters: {"utf8"=>"✓", "nome"=>"Biscoito", "commit"=>"Buscar"}
+  [1m[36mRecipe Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."title" = ? LIMIT ?[0m  [["title", "Biscoito"], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Arabe"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.3ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Arabe"], ["created_at", "2018-07-10 13:21:01.370814"], ["updated_at", "2018-07-10 13:21:01.370814"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Entrada"], ["created_at", "2018-07-10 13:21:01.377327"], ["updated_at", "2018-07-10 13:21:01.377327"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.1ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato Principal"], ["created_at", "2018-07-10 13:21:01.380230"], ["updated_at", "2018-07-10 13:21:01.380230"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.1ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:01.381927"], ["updated_at", "2018-07-10 13:21:01.381927"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.4ms)
+Started GET "/recipes/new" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipesController#new as HTML
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.4ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/new.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 17ms (Views: 13.6ms | ActiveRecord: 0.5ms)
+Started POST "/recipes" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "recipe"=>{"title"=>"Tabule", "recipe_type_id"=>"1", "cuisine_id"=>"1", "difficulty"=>"Fácil", "cook_time"=>"45", "ingredients"=>"Trigo para quibe, cebola, tomate picado, azeite, salsinha", "cook_method"=>"Misturar tudo e servir. Adicione limão a gosto.", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fc6707f22c0 @tempfile=#<Tempfile:/var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/RackMultipart20180710-89906-46z6kl.jpg>, @original_filename="tabule.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"recipe[avatar]\"; filename=\"tabule.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 40409\r\n">}, "commit"=>"Enviar"}
+[paperclip] Trying to link /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/RackMultipart20180710-89906-46z6kl.jpg to /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89906-vqi1j.jpg
+[paperclip] Trying to link /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89906-vqi1j.jpg to /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89906-vtmw6z.jpg
+Command :: file -b --mime '/var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89906-vtmw6z.jpg'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[paperclip] Trying to link /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89906-vqi1j.jpg to /var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89906-1vebq2o.jpg
+Command :: file -b --mime '/var/folders/ty/5s1743q97zb3j2y9nbr7b68h0000gp/T/c5a3ab222d4625b8c895ef5b9ffc209e20180710-89906-1vebq2o.jpg'
+  [1m[36mRecipe Create (0.6ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Tabule"], ["difficulty", "Fácil"], ["cook_time", 45], ["created_at", "2018-07-10 13:21:01.512975"], ["updated_at", "2018-07-10 13:21:01.512975"], ["ingredients", "Trigo para quibe, cebola, tomate picado, azeite, salsinha"], ["cook_method", "Misturar tudo e servir. Adicione limão a gosto."], ["cuisine_id", 1], ["recipe_type_id", 1], ["avatar_file_name", "tabule.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 40409], ["avatar_updated_at", "2018-07-10 13:21:01.456828"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/recipes/1
+Completed 302 Found in 69ms (ActiveRecord: 1.0ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Arabe"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.9ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Arabe"], ["created_at", "2018-07-10 13:21:01.557580"], ["updated_at", "2018-07-10 13:21:01.557580"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 17ms (Views: 14.8ms | ActiveRecord: 1.0ms)
+Started GET "/recipes/new" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipesController#new as HTML
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 0.2ms)
+Started POST "/recipes" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipesController#create as HTML
+  Parameters: {"utf8"=>"✓", "recipe"=>{"title"=>"", "cuisine_id"=>"1", "difficulty"=>"", "cook_time"=>"", "ingredients"=>"", "cook_method"=>""}, "commit"=>"Enviar"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering recipes/new.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  Rendered recipes/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 18ms (Views: 10.7ms | ActiveRecord: 0.6ms)
+  [1m[35m (8.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.6ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:01.667089"], ["updated_at", "2018-07-10 13:21:01.667089"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:01.671552"], ["updated_at", "2018-07-10 13:21:01.671552"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:01.681773"], ["updated_at", "2018-07-10 13:21:01.681773"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (1.0ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 17ms (Views: 14.5ms | ActiveRecord: 1.6ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.8ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:01.750301"], ["updated_at", "2018-07-10 13:21:01.750301"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.1ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:01.752381"], ["updated_at", "2018-07-10 13:21:01.752381"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:01.754933"], ["updated_at", "2018-07-10 13:21:01.754933"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 23ms (Views: 21.6ms | ActiveRecord: 0.9ms)
+Started GET "/recipes/1" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipes/show.html.erb within layouts/application
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipes/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.8ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (1.1ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:01.823331"], ["updated_at", "2018-07-10 13:21:01.823331"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:01.828483"], ["updated_at", "2018-07-10 13:21:01.828483"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:01.832193"], ["updated_at", "2018-07-10 13:21:01.832193"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.4ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 1.2ms)
+Started GET "/cuisines/1" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by CuisinesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cuisines/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."cuisine_id" = ? LIMIT ?[0m  [["cuisine_id", 1], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."cuisine_id" = ?[0m  [["cuisine_id", 1]]
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cuisines/show.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 11ms (Views: 8.9ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.4ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:01.878496"], ["updated_at", "2018-07-10 13:21:01.878496"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:01.881434"], ["updated_at", "2018-07-10 13:21:01.881434"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:01.883440"], ["updated_at", "2018-07-10 13:21:01.883440"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Italiana"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.1ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Italiana"], ["created_at", "2018-07-10 13:21:01.887071"], ["updated_at", "2018-07-10 13:21:01.887071"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.3ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato Principal"], ["created_at", "2018-07-10 13:21:01.888661"], ["updated_at", "2018-07-10 13:21:01.888661"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Macarrão Carbonara"], ["difficulty", "Difícil"], ["cook_time", 30], ["created_at", "2018-07-10 13:21:01.895174"], ["updated_at", "2018-07-10 13:21:01.895174"], ["ingredients", "Massa, ovos, bacon"], ["cook_method", "Frite o bacon; Cozinhe a massa ate ficar al dent; Misture os ovos e o bacon a massa ainda quente;"], ["cuisine_id", 2], ["recipe_type_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.6ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 1.4ms)
+Started GET "/cuisines/2" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by CuisinesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering cuisines/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."cuisine_id" = ? LIMIT ?[0m  [["cuisine_id", 2], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."cuisine_id" = ?[0m  [["cuisine_id", 2]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered cuisines/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.3ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:01.945842"], ["updated_at", "2018-07-10 13:21:01.945842"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:01.947415"], ["updated_at", "2018-07-10 13:21:01.947415"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:01.949490"], ["updated_at", "2018-07-10 13:21:01.949490"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Italiana"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.2ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Italiana"], ["created_at", "2018-07-10 13:21:01.952940"], ["updated_at", "2018-07-10 13:21:01.952940"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.2ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 21ms (Views: 16.7ms | ActiveRecord: 0.9ms)
+Started GET "/cuisines/2" for 127.0.0.1 at 2018-07-10 10:21:01 -0300
+Processing by CuisinesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCuisine Load (0.4ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering cuisines/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."cuisine_id" = ? LIMIT ?[0m  [["cuisine_id", 2], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."cuisine_id" = ?[0m  [["cuisine_id", 2]]
+  Rendered cuisines/show.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.3ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:02.005820"], ["updated_at", "2018-07-10 13:21:02.005820"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.6ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:02.013788"], ["updated_at", "2018-07-10 13:21:02.013788"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:02.016138"], ["updated_at", "2018-07-10 13:21:02.016138"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:02 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.3ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.7ms)
+Started GET "/recipe_types/1" for 127.0.0.1 at 2018-07-10 10:21:02 -0300
+Processing by RecipeTypesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering recipe_types/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."recipe_type_id" = ? LIMIT ?[0m  [["recipe_type_id", 1], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."recipe_type_id" = ?[0m  [["recipe_type_id", 1]]
+  [1m[36mCuisine Load (0.4ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered recipe_types/show.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.4ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:02.068228"], ["updated_at", "2018-07-10 13:21:02.068228"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:02.072386"], ["updated_at", "2018-07-10 13:21:02.072386"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:02.080559"], ["updated_at", "2018-07-10 13:21:02.080559"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Italiana"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.2ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Italiana"], ["created_at", "2018-07-10 13:21:02.086175"], ["updated_at", "2018-07-10 13:21:02.086175"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.1ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato Principal"], ["created_at", "2018-07-10 13:21:02.089768"], ["updated_at", "2018-07-10 13:21:02.089768"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Macarrão Carbonara"], ["difficulty", "Difícil"], ["cook_time", 30], ["created_at", "2018-07-10 13:21:02.095943"], ["updated_at", "2018-07-10 13:21:02.095943"], ["ingredients", "Massa, ovos, bacon"], ["cook_method", "Frite o bacon; Cozinhe a massa ate ficar al dent; Misture os ovos e o bacon a massa ainda quente;"], ["cuisine_id", 2], ["recipe_type_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:02 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.7ms)
+Started GET "/recipe_types/2" for 127.0.0.1 at 2018-07-10 10:21:02 -0300
+Processing by RecipeTypesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering recipe_types/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."recipe_type_id" = ? LIMIT ?[0m  [["recipe_type_id", 2], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."recipe_type_id" = ?[0m  [["recipe_type_id", 2]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered recipe_types/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.4ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:02.136357"], ["updated_at", "2018-07-10 13:21:02.136357"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.1ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:02.138279"], ["updated_at", "2018-07-10 13:21:02.138279"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:02.140221"], ["updated_at", "2018-07-10 13:21:02.140221"], ["ingredients", "Farinha, açucar, cenoura"], ["cook_method", "Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.1ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato Principal"], ["created_at", "2018-07-10 13:21:02.147860"], ["updated_at", "2018-07-10 13:21:02.147860"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:02 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.2ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 16ms (Views: 13.6ms | ActiveRecord: 1.1ms)
+Started GET "/recipe_types/2" for 127.0.0.1 at 2018-07-10 10:21:02 -0300
+Processing by RecipeTypesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering recipe_types/show.html.erb within layouts/application
+  [1m[36mRecipe Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "recipes" WHERE "recipes"."recipe_type_id" = ? LIMIT ?[0m  [["recipe_type_id", 2], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."recipe_type_id" = ?[0m  [["recipe_type_id", 2]]
+  Rendered recipe_types/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:02 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (0.6ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:02.199159"], ["updated_at", "2018-07-10 13:21:02.199159"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (1.9ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:02.203173"], ["updated_at", "2018-07-10 13:21:02.203173"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:02.213654"], ["updated_at", "2018-07-10 13:21:02.213654"], ["ingredients", "Cenoura, acucar, oleo e chocolate"], ["cook_method", "Misturar tudo, bater e assar"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:02 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCuisine Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cuisines" WHERE "cuisines"."name" = ? LIMIT ?[0m  [["name", "Brasileira"], ["LIMIT", 1]]
+  [1m[36mCuisine Create (3.6ms)[0m  [1m[32mINSERT INTO "cuisines" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Brasileira"], ["created_at", "2018-07-10 13:21:02.240025"], ["updated_at", "2018-07-10 13:21:02.240025"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.2ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sobremesa"], ["created_at", "2018-07-10 13:21:02.247778"], ["updated_at", "2018-07-10 13:21:02.247778"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bolo de cenoura"], ["difficulty", "Médio"], ["cook_time", 60], ["created_at", "2018-07-10 13:21:02.249905"], ["updated_at", "2018-07-10 13:21:02.249905"], ["ingredients", "Cenoura, acucar, oleo e chocolate"], ["cook_method", "Misturar tudo, bater e assar"], ["cuisine_id", 1], ["recipe_type_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipeType Create (0.1ms)[0m  [1m[32mINSERT INTO "recipe_types" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Prato Principal"], ["created_at", "2018-07-10 13:21:02.251655"], ["updated_at", "2018-07-10 13:21:02.251655"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.1ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "difficulty", "cook_time", "created_at", "updated_at", "ingredients", "cook_method", "cuisine_id", "recipe_type_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Feijoada"], ["difficulty", "Difícil"], ["cook_time", 90], ["created_at", "2018-07-10 13:21:02.253200"], ["updated_at", "2018-07-10 13:21:02.253200"], ["ingredients", "Feijao, paio, carne seca"], ["cook_method", "Cozinhar o feijao e refogar com as carnes já preparadas"], ["cuisine_id", 1], ["recipe_type_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-07-10 10:21:02 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.1ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT  "recipe_types".* FROM "recipe_types" WHERE "recipe_types"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Cuisine Load (0.0ms)[0m  [1m[34mSELECT  "cuisines".* FROM "cuisines" WHERE "cuisines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCuisine Load (0.3ms)[0m  [1m[34mSELECT "cuisines".* FROM "cuisines"[0m
+  [1m[36mRecipeType Load (0.1ms)[0m  [1m[34mSELECT "recipe_types".* FROM "recipe_types"[0m
+  Rendered home/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.9ms)
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
